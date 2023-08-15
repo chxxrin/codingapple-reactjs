@@ -11,7 +11,7 @@ function App() {
     const savedCount = localStorage.getItem("따봉");
     return savedCount ? parseInt(savedCount) : 0;
   });
-
+  let [modal, setModal] = useState(false);
   // 따봉 값이 변경될 때마다 localStorage에 저장하기.
   useEffect(() => {
     localStorage.setItem("따봉", 따봉.toString());
@@ -54,7 +54,11 @@ function App() {
       </button>
 
       <div className="list">
-        <h4>
+        <h4
+          onClick={() => {
+            setModal(true);
+          }}
+        >
           {글제목[0]}{" "}
           <span
             onClick={() => {
@@ -75,8 +79,18 @@ function App() {
         <h4>{글제목[2]}</h4>
         <p>Date : 8/16</p>
       </div>
+      {modal === true ? <Modal /> : null}
     </div>
   );
 }
 
+function Modal() {
+  return (
+    <div className="modal">
+      <h4>title</h4>
+      <p>date</p>
+      <p>content</p>
+    </div>
+  );
+}
 export default App;
