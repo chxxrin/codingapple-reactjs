@@ -56,7 +56,7 @@ function App() {
       <div className="list">
         <h4
           onClick={() => {
-            setModal(true);
+            setModal(!modal);
           }}
         >
           {글제목[0]}{" "}
